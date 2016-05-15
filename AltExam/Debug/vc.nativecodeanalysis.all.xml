@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>e:\anton\programming\altexam\altexam\</FILEPATH>
+      <FILENAME>main.cpp</FILENAME>
+      <LINE>20</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>6330</DEFECTCODE>
+    <DESCRIPTION>"char" передан в качестве параметра _Param_(1), хотя при вызове "isdigit" требуется "unsigned char".</DESCRIPTION>
+    <FUNCTION>baseIn</FUNCTION>
+    <DECORATED>?baseIn@@YA?AV?$vector@HV?$allocator@H@std@@@std@@XZ</DECORATED>
+    <FUNCLINE>8</FUNCLINE>
+    <PATH />
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\anton\programming\altexam\altexam\</FILEPATH>
+      <FILENAME>main.cpp</FILENAME>
+      <LINE>48</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6031</DEFECTCODE>
+    <DESCRIPTION>Возвращаемое значение пропущено: "_getch".</DESCRIPTION>
+    <FUNCTION>main</FUNCTION>
+    <DECORATED>main</DECORATED>
+    <FUNCLINE>42</FUNCLINE>
+    <PATH />
+  </DEFECT></DEFECTS>
