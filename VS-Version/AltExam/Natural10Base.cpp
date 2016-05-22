@@ -1,5 +1,4 @@
 #include "Natural10Base.h"
-#include <iostream>
 
 bool COM_NN_D(Natural10Base First, Natural10Base Second)//Сравнивает два числа. Возвращает 1, 
 {											// если первое больше или равно второму. 0 - если меньше.(Алексеева Анастасия 5372)
@@ -247,6 +246,11 @@ Natural10Base LCM_NN_N(Natural10Base chislo1, Natural10Base chislo2)//Находит НО
 Natural10Base intToNat10(int a)
 {
 	Natural10Base num;
+	if (!a)
+	{
+		num.A.resize(1);
+		return num;
+	}
 	int i(0);
 	while (a != 0)
 	{

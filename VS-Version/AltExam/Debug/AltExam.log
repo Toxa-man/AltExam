@@ -1,12 +1,2 @@
-﻿  Integer.cpp
-e:\anton\programming\altexam\altexam\integer.cpp(39): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(59): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(71): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(101): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(109): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(123): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(153): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(172): warning C4018: <: несоответствие типов со знаком и без знака
-e:\anton\programming\altexam\altexam\integer.cpp(186): warning C4018: <: несоответствие типов со знаком и без знака
-  AltExam.vcxproj -> E:\Anton\Programming\AltExam\Debug\AltExam.exe
+﻿  AltExam.vcxproj -> E:\Anton\Programming\AltExam\Debug\AltExam.exe
   AltExam.vcxproj -> E:\Anton\Programming\AltExam\Debug\AltExam.pdb (Partial PDB)

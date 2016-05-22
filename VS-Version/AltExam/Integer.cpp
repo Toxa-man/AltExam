@@ -2,16 +2,18 @@
 
 
 
-Integer::Integer()
+Integer::Integer() //Конструктор
 {
+		nat.base = nat.baseIn();
+		nat.array.resize(nat.base.size());
 }
 
 
-Integer::~Integer()
+Integer::~Integer() //Деструктор
 {
 }
 
-Integer & Integer::operator=(const Integer & right)
+Integer & Integer::operator=(const Integer & right) //Оператор сравнения
 {
 	if (this == &right)
 		return *this;
@@ -21,9 +23,13 @@ Integer & Integer::operator=(const Integer & right)
 	return *this;
 }
 
-Integer10Base Integer::integerToInt10Base()
+Integer10Base Integer::integerToInt10Base() //Перевод целого числа в десятичное
 {
-
+	if (nat.isEmpty())
+	{
+		Natural10Base res = intToNat10(0);
+		return TRANS_N_Z(res);
+	}
 	Integer10Base res;
 	res.pos = 1;
 	res.A.A.resize(1);
@@ -95,7 +101,7 @@ Integer10Base Integer::integerToInt10Base()
 	return res;
 }
 
-const Integer operator+(const Integer & left, const Integer & right)
+const Integer operator+(const Integer & left, const Integer & right) //Сложение
 {
 	Integer res;
 	for (int i(0); i < left.nat.base.size(); i++)
@@ -103,7 +109,7 @@ const Integer operator+(const Integer & left, const Integer & right)
 	return res;
 }
 
-const Integer operator-(const Integer & left, const Integer & right)
+const Integer operator-(const Integer & left, const Integer & right) //Вычитание
 {
 	Integer res;
 	for (int i(0); i < left.nat.base.size(); i++)
@@ -116,7 +122,7 @@ const Integer operator-(const Integer & left, const Integer & right)
 	return res;
 }
 
-const Integer operator*(const Integer & left, const Integer & right)
+const Integer operator*(const Integer & left, const Integer & right) //Умножение
 {
 	Integer res;
 	res.nat.array.resize(left.nat.array.size());
@@ -125,7 +131,7 @@ const Integer operator*(const Integer & left, const Integer & right)
 	return res;
 }
 
-const Integer operator/(const Integer & left, const Integer & right)
+const Integer operator/(const Integer & left, const Integer & right) //Деление
 {
 	Integer10Base rightInt, leftInt, resInt;
 	Integer res = right;
@@ -141,14 +147,16 @@ const Integer operator/(const Integer & left, const Integer & right)
 	return res;
 }
 
-const Integer operator%(const Integer & left, const Integer & right)
+const Integer operator%(const Integer & left, const Integer & right) //Остаток от деления
 {
 	Integer res;
-	res = left - (left / right)*right; //TODO: Отрицательные числа
+	res = left - (left / right)*right;
+	if (res < 0)
+		res = res + right;
 	return res;
 }
 
-bool operator==(const Integer & left, const Integer & right)
+bool operator==(const Integer & left, const Integer & right) //Сравнение
 {
 	for (int i(0); i < left.nat.base.size(); i++)
 		if (left.nat.array[i] != right.nat.array[i])
@@ -156,7 +164,7 @@ bool operator==(const Integer & left, const Integer & right)
 	return true;
 }
 
-bool operator>(const Integer & left, const Integer & right)
+bool operator>(const Integer & left, const Integer & right) //Больше
 {
 	Integer num;
 	num = left - right;
@@ -192,7 +200,7 @@ bool operator>(const Integer & left, const Integer & right)
 
 }
 
-bool operator<(const Integer & left, const Integer & right)
+bool operator<(const Integer & left, const Integer & right) //Меньше
 {
 	Integer num;
 	num = left - right;
@@ -202,9 +210,75 @@ bool operator<(const Integer & left, const Integer & right)
 		return false;
 }
 
+bool operator<=(const Integer & left, const Integer & right)
+{
+	if ((left < right) || (left == right))
+		return true;
+	else
+		return false;
+}
+
+bool operator>=(const Integer & left, const Integer & right)
+{
+	if ((left > right) || (left == right))
+		return true;
+	else
+		return false;
+}
+
+bool operator==(const Integer & left, const int & right)
+{
+	Integer res;
+	res = int10BaseToInteger(TRANS_N_Z(intToNat10(0)));
+	if (left == res)
+		return true;
+	else
+		return false;
+}
+
+bool operator>(const Integer & left, const int & right)
+{
+	Integer res;
+	res = int10BaseToInteger(TRANS_N_Z(intToNat10(0)));
+	if (left > res)
+		return true;
+	else
+		return false;
+}
+
+bool operator<(const Integer & left, const int & right)
+{
+	Integer res;
+	res = int10BaseToInteger(TRANS_N_Z(intToNat10(0)));
+	if (left < res)
+		return true;
+	else
+		return false;
+}
+
+bool operator<=(const Integer & left, const int & right)
+{
+	Integer res;
+	res = int10BaseToInteger(TRANS_N_Z(intToNat10(0)));
+	if (left <= res)
+		return true;
+	else
+		return false;
+}
+
+bool operator>=(const Integer & left, const int & right)
+{
+	Integer res;
+	res = int10BaseToInteger(TRANS_N_Z(intToNat10(0)));
+	if (left >= res)
+		return true;
+	else
+		return false;
+}
 
 
-istream & operator>>(istream & is, Integer & num)
+
+istream & operator>>(istream & ins, Integer & num) //Ввод
 {
 	string str;
 	Integer10Base num10;
@@ -225,11 +299,11 @@ istream & operator>>(istream & is, Integer & num)
 		num.nat.array[k] = nat10ToInt(TRANS_Z_N(MOD_ZZ_Z(num10, intToNat10(num.nat.base[k])))); 
 		k--;
 	} while (k != -1);
-	return is;
+	return ins;
 
 }
 
-ostream & operator<<(ostream & os, const Integer & num)
+ostream & operator<<(ostream & ots, const Integer & num) //Вывод
 {
 	Integer10Base res;
 	Integer temp = num;
@@ -238,10 +312,10 @@ ostream & operator<<(ostream & os, const Integer & num)
 		cout << '-';
 	for (int i(res.A.A.size() - 1); i >= 0; i--)
 		cout << res.A.A[i];
-	return os;
+	return ots;
 }
 
-Integer int10BaseToInteger(Integer10Base num)
+Integer int10BaseToInteger(Integer10Base num) //Десятичное число в целое
 {
 	Integer res;
 	int k(res.nat.base.size() - 1);

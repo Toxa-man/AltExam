@@ -1,6 +1,6 @@
 
 #include "Natural.h"
-int findRevNum(int num, int mod)
+int findRevNum(int num, int mod) //Поиск обратного числа
 {
 	int x(1), y(0), quotient, j(0), temp, mainMod = mod;
 	do
@@ -31,19 +31,19 @@ int findRevNum(int num, int mod)
 	}
 }
 
-Natural::Natural()
+Natural::Natural() //Конструктор
 {
 	base = baseIn();
 	array.resize(base.size());
 }
 
 
-Natural::~Natural()
+Natural::~Natural() //Деструктор
 {
 }
 
 
-Natural & Natural::operator=(const Natural & right)
+Natural & Natural::operator=(const Natural & right) //Оператор сравнения
 {
 	if (this == &right) 
 		return *this;
@@ -53,7 +53,7 @@ Natural & Natural::operator=(const Natural & right)
 	return *this;
 }
 
-bool Natural::isEmpty()
+bool Natural::isEmpty() //Проверка на равенство нулю
 {
 	bool flag(1);
 	for (int i(0); i < array.size(); i++)
@@ -62,7 +62,7 @@ bool Natural::isEmpty()
 	return true;
 }
 
-Natural10Base Natural::natTo10BaseNat()
+Natural10Base Natural::natTo10BaseNat() //Алгоритм перевода из вектора остатков в десятичное число
 {
 	Natural10Base res;
 	res.A.resize(1);
@@ -92,7 +92,7 @@ Natural10Base Natural::natTo10BaseNat()
 		reverseNum.array.resize(num.array.size());
 		reverseNum.base.resize(num.base.size());
 		for (int i(0); i < newBase.size(); i++)
-			reverseNum.array[i] = findRevNum(base[k], newBase[i]); //TODO: Алгоритм евклида
+			reverseNum.array[i] = findRevNum(base[k], newBase[i]); 
 		num = num*reverseNum;
 		k++;
 
@@ -125,42 +125,47 @@ Natural10Base Natural::natTo10BaseNat()
 	return res;
 }
 
-vector<int> Natural::baseIn()
+vector<int> Natural::baseIn() //Функция ввода простох чисел из файла in.txt
 {
-	bool inWord(true);
-	string str;
 	vector<int>a(500);
 	fstream in;
 	in.open("in.txt", ios::in);
+	bool inWord(true);
+	string str = "";
+
 	char c(0);
 	int i(0), j(0);
-	while (!in.eof())
-	{
-		in.get(c);
-		if (isdigit(c))
+
+	
+		while (!in.eof())
 		{
-			inWord = true;
-			str += c;
-		}
-		else
-		{
-			if (inWord)
+			in.get(c);
+			if (isdigit(c))
 			{
-				a[i] = stoi(str);
-				i++;
-				str.clear();
+				inWord = true;
+				str += c;
 			}
-			inWord = false;
-		}
-
-
+			else
+			{
+				if (inWord)
+				{
+					a[i] = stoi(str);
+					i++;
+					str.clear();
+				}
+				inWord = false;
+			}
 	}
+	
+	
+	
 	reverse(a.begin(), a.end());
 	in.close();
 	return a;
+
 }
 
-const Natural operator+(const Natural & right, const Natural & left)
+const Natural operator+(const Natural & right, const Natural & left) //Сложение чисел
 {
 	Natural res;
 	for (int i(0); i < right.base.size(); i++)
@@ -168,7 +173,7 @@ const Natural operator+(const Natural & right, const Natural & left)
 	return res;
 }
 
-const Natural operator-(const Natural & right, const Natural & left)
+const Natural operator-(const Natural & right, const Natural & left) //Вычитание чисел
 {
 	Natural res;
 	for (int i(0); i < right.base.size(); i++)
@@ -181,7 +186,7 @@ const Natural operator-(const Natural & right, const Natural & left)
 	return res;
 }
 
-const Natural operator*(const Natural & right, const Natural & left)
+const Natural operator*(const Natural & right, const Natural & left) //Умножение чисел
 {
 	Natural res;
 	res.array.resize(right.array.size());
@@ -190,7 +195,7 @@ const Natural operator*(const Natural & right, const Natural & left)
 	return res;
 }
 
-istream & operator>>(istream & is, Natural & num)
+istream & operator>>(istream & ins, Natural & num) //Ввод числа
 {
 	string str;
 	Natural10Base num10;
@@ -208,16 +213,15 @@ istream & operator>>(istream & is, Natural & num)
 	} while ((num.array[k+1]  != nat10ToInt(num10)) && (k!=-1));
 	for (int i(k); i >= 0; i--)
 		num.array[i] = num.array[k + 1];
-	return is;
+	return ins;
 }
 
-ostream & operator<<(ostream & os,const Natural & num)
+ostream & operator<<(ostream & ots,const Natural & num) //Вывод числа
 {
 	Natural10Base res;
 	Natural temp = num;
 	res = temp.natTo10BaseNat();
 	for (int i(res.A.size() - 1); i >= 0; i--)
 		cout << res.A[i];
-	return os;
-	// TODO: вставьте здесь оператор return
+	return ots;
 }

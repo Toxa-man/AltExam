@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>e:\anton\programming\altexam\altexam\</FILEPATH>
+      <FILENAME>natural.cpp</FILENAME>
+      <LINE>143</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6330</DEFECTCODE>
+    <DESCRIPTION>"char" передан в качестве параметра _Param_(1), хотя при вызове "isdigit" требуется "unsigned char".</DESCRIPTION>
+    <FUNCTION>Natural::baseIn</FUNCTION>
+    <DECORATED>?baseIn@Natural@@AAE?AV?$vector@HV?$allocator@H@std@@@std@@XZ</DECORATED>
+    <FUNCLINE>128</FUNCLINE>
+    <PATH />
+  </DEFECT>
+</DEFECTS>

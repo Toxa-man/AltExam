@@ -70,6 +70,7 @@ Integer10Base ADD_ZZ_Z(Integer10Base first, Integer10Base second) //Сложение дву
 Integer10Base SUB_ZZ_Z(Integer10Base first, Integer10Base second) //Вычитание двух целых чисел.
 {						//Выполнил Предтеченский Дмитрий (5396).
 	Integer10Base sub;
+	sub.pos = 1;
 
 	if (POZ_Z_D(first) <= 0)
 		if (POZ_Z_D(second) <= 0)

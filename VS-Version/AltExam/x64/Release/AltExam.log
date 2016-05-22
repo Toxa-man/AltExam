@@ -1,0 +1,26 @@
+﻿  Integer.cpp
+Integer.cpp(218): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Integer.cpp(222): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Integer.cpp(239): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Integer.cpp(247): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Integer10Base.cpp
+  main.cpp
+main.cpp(49): warning C4101: c: неиспользованная локальная переменная
+  Natural.cpp
+Natural.cpp(199): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Natural.cpp(203): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Natural.cpp(219): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Natural10Base.cpp
+Natural10Base.cpp(12): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Natural10Base.cpp(87): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Natural10Base.cpp(115): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Natural10Base.cpp(129): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Natural10Base.cpp(184): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода
+e:\anton\programming\altexam\altexam\natural10base.cpp(33): warning C4715: COM_NN_D: значение возвращается не при всех путях выполнения
+  794 of 910 functions (87.3%) were compiled, the rest were copied from previous compilation.
+    425 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  AltExam.vcxproj -> E:\Anton\Programming\AltExam\x64\Release\AltExam.exe
+  AltExam.vcxproj -> E:\Anton\Programming\AltExam\x64\Release\AltExam.pdb (Full PDB)
